@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+pyyaml
+tqdm
+rich
+mediapipe
+numpy
