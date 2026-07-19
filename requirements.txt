@@ -5,3 +5,7 @@ tqdm
 rich
 mediapipe
 numpy
+torch
+torchmetrics
+tensorboard
+onnxscript
