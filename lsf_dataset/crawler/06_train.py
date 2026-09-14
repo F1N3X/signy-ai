@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 DATA_DIR      = Path("lsf_dataset/keypoints_augmented")
 OUTPUT_DIR    = Path("lsf_dataset/model")
 
-TARGET_FRAMES = 30
+TARGET_FRAMES = 90
 FEATURE_DIM   = 444     # 148 landmarks × 3 coords
 
 # Hyperparamètres
@@ -44,7 +44,7 @@ EPOCHS        = 100
 LR            = 1e-3
 WEIGHT_DECAY  = 1e-4
 DROPOUT       = 0.2
-PATIENCE      = 12      # early stopping
+PATIENCE      = 15      # early stopping
 
 # Architecture Transformer
 D_MODEL       = 64     # dimension d'embedding

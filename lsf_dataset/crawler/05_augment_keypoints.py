@@ -38,11 +38,11 @@ import numpy as np
 
 INPUT_DIR        = Path("lsf_dataset/keypoints")
 OUTPUT_DIR       = Path("lsf_dataset/keypoints_augmented")
-TARGET_PER_CLASS = 50
+TARGET_PER_CLASS = 100
 SEED             = 42
 
 # Dimensions (doivent correspondre à 04_extract_keypoints.py)
-TARGET_FRAMES = 30
+TARGET_FRAMES = 90
 N_FACE        = 73
 N_LANDMARKS   = 21 + 21 + 33 + N_FACE   # 148
 FEATURE_DIM   = N_LANDMARKS * 3          # 444

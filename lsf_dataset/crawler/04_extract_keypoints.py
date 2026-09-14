@@ -55,7 +55,7 @@ VIDEO_DIR     = Path("lsf_dataset/to_train_videos")
 OUTPUT_DIR    = Path("lsf_dataset/keypoints")
 MODELS_DIR    = Path("lsf_dataset/models")
 
-TARGET_FRAMES = 30    # frames par clip après rééchantillonnage
+TARGET_FRAMES = 90    # frames par clip après rééchantillonnage
 MAX_WORKERS   = 1     # MediaPipe tasks ne sont pas fork-safe → laisser à 1
 MIN_FRAMES    = 5     # clips trop courts → ignorés
 
@@ -307,7 +307,12 @@ def main() -> None:
             continue
         word = word_dir.name
         label_set.add(word)
-        for i, video_file in enumerate(sorted(word_dir.glob("*.mp4"))):
+        video_files = sorted(
+            video_file
+            for video_file in word_dir.iterdir()
+            if video_file.is_file() and video_file.suffix.lower() in {".mp4", ".webm"}
+        )
+        for i, video_file in enumerate(video_files):
             out_path = OUTPUT_DIR / word / f"{word}_{i:04d}.npy"
             if out_path.exists():
                 continue
