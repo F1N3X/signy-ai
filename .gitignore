@@ -2,3 +2,4 @@
 /lsf_dataset/keypoints_augmented
 /lsf_dataset/crawler/__pycache__
 /lsf_dataset/model
+*/to_train_videos/
