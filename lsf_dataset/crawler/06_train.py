@@ -40,17 +40,17 @@ FEATURE_DIM   = 444     # 148 landmarks × 3 coords
 
 # Hyperparamètres
 BATCH_SIZE    = 32
-EPOCHS        = 100
-LR            = 1e-3
-WEIGHT_DECAY  = 1e-4
-DROPOUT       = 0.2
+EPOCHS        = 1000
+LR            = 3e-4
+WEIGHT_DECAY  = 1e-3
+DROPOUT       = 0.3
 PATIENCE      = 15      # early stopping
 
 # Architecture Transformer
 D_MODEL       = 64     # dimension d'embedding
 N_HEADS       = 4       # têtes d'attention (D_MODEL doit être divisible)
-N_LAYERS      = 3       # couches encoder
-DIM_FF        = 256     # dimension feed-forward interne
+N_LAYERS      = 2       # couches encoder
+DIM_FF        = 128     # dimension feed-forward interne
 
 # Split
 TRAIN_RATIO   = 0.70
@@ -369,7 +369,7 @@ def main() -> None:
     print(model)
 
     # Loss, optimizer, scheduler
-    criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
+    criterion = nn.CrossEntropyLoss(label_smoothing=0.05)
     optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS, eta_min=LR / 20)
 
@@ -441,7 +441,7 @@ def main() -> None:
     # ── Export ONNX ────────────────────────────────────────────────────────────
     model.eval()
     dummy = torch.zeros(1, TARGET_FRAMES, FEATURE_DIM, device=device)
-    onnx_path = OUTPUT_DIR / "lsf_model.onnx"
+    onnx_path = OUTPUT_DIR / "P4-SC4L.onnx"
     torch.onnx.export(
         model, dummy, str(onnx_path),
         input_names=["keypoints"],

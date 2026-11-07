@@ -18,9 +18,9 @@ Augmentations appliquées (toutes sur les coordonnées 3D directement) :
   
 Structure de sortie :
   lsf_dataset/keypoints_augmented/
-    bonjour/
-      bonjour_0000_orig.npy
-      bonjour_0000_aug000.npy
+    bonjour-merci/
+      bonjour-merci_0000_orig.npy
+      bonjour-merci_0000_aug000.npy
       ...
     ...
   lsf_dataset/keypoints_augmented/labels.json
